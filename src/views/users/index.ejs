@@ -1,0 +1,54 @@
+<div class="container">
+	<h1>
+		List Users
+		<a href="/users/add" class="btn btn-primary btn-sm">Add User</a>
+	</h1>
+	<br>
+	<%- include('../element/flash/default') %>
+	<% if (listUsers){ %>
+	<div class="table-responsive">
+		<table class="table table-sm table-inverse">
+			<thead>
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-left">First Name</th>
+					<th class="text-left">Last Name</th>
+					<th class="text-left">Username</th>
+					<th class="text-center">Phone</th>
+					<th class="text-center" style="width: 240px;">Email</th>
+					<th class="text-center">Role</th>
+					<th class="text-center" style="width: 150px;">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% listUsers.forEach(function (user, i) { -%>
+					<%
+						var linkDetail = '/users/detail/' + user.id;
+						var linkEdit   = '/users/edit/' + user.id;
+						var linkDelete = '/users/delete/' + user.id;
+					%>
+					<tr>
+						<td class="text-center"><%= (i + 1); %></td>
+						<td><a href="<%= linkDetail %>"><%= user.first_name %></a></td>
+						<td><a href="<%= linkDetail %>"><%= user.last_name %></a></td>
+						<td><a href="<%= linkDetail %>"><%= user.user_name %></a></td>
+						<td class="text-center"><%= user.phone %></td>
+						<td class="text-left"><%= user.email %></td>
+						<td class="text-center"><%= user.role_name %></td>
+						<td class="text-center">
+							<a href="<%= linkEdit %>" class="btn btn-primary btn-xs">
+								<i class="fa fa-pencil" aria-hidden="true"></i> Modify
+							</a>
+							<a href="<%= linkDelete %>" class="btn btn-danger btn-xs" onclick="if(!confirm('Bạn có chắc chắn muốn xóa?')) { return false; }">
+								<i class="fa fa-times" aria-hidden="true"></i> Delete
+							</a>
+						</td>
+					</tr>
+				<% }) -%>
+			</tbody>
+		</table>
+	</div>
+	<% } else { %>
+		<%- include('../element/block/no-item-mgs') %>
+	<% } %>
+</div>

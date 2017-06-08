@@ -1,0 +1,66 @@
+<%= JSON.stringify(); %>
+
+<% if (listMessages.length > 0) { %>
+	<% listMessages.forEach(function (message, i) { -%>
+		<% if(message.type_sent == define.CUSTOMMER) { %>
+			<div class="item" data-time="<%= message.created %>">
+				<div class="img">
+					<a href="#" style="background-color: <%= message.from.color %>;"><%= message.from.sub_name %></a>
+					<div class="time"><%= message.created %></div>
+				</div>
+				<div class="content">
+					
+					<% if(Array.isArray(message.message)){ %>
+						<% message.message.forEach(function (mgs, j) { -%>
+							<div><div class="message <%= (j == 0 ? 'first' : '') %>"><%= mgs %></div></div>
+						<% }); -%>
+					<% } else { %>
+						<div><div class="message first"><%= message.message %></div></div>
+					<% } %>
+					
+				</div>
+				<div class="clear"></div>
+			</div>
+		<% } else if (message.type_sent == define.SUPPORT){ %>
+			<div class="item support_chat" data-time="<%= message.created %>">
+				<div class="img">
+					<a href="#" style="background-color: <%= message.from.color %>;"><%= message.from.sub_name %></a>
+					<div class="time"><%= message.created %></div>
+				</div>
+				<div class="content">
+
+					<% if(Array.isArray(message.message)){ %>
+						<% message.message.forEach(function (mgs, j) { -%>
+							<div><div class="message <%= (j == 0 ? 'first' : '') %>"><%= mgs %></div></div>
+						<% }); -%>
+					<% } else { %>
+						<div><div class="message first"><%= message.message %></div></div>
+					<% } %>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		<% } else if (message.type_sent == define.CHATBOT){ %>
+			<div class="item support_chat chatbot" data-time="<%= message.created %>">
+				<div class="img">
+					<a href="#" style=""><i class="fa fa-android" aria-hidden="true"></i></a>
+					<div class="time"><%= message.created %></div>
+				</div>
+				<div class="content">
+
+					<% if(Array.isArray(message.message)){ %>
+						<% message.message.forEach(function (mgs, j) { -%>
+							<div><div class="message <%= (j == 0 ? 'first' : '') %>"><%= mgs %></div></div>
+						<% }); -%>
+					<% } else { %>
+						<div><div class="message first"><%= message.message %></div></div>
+					<% } %>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		<% } %>
+	<% }); -%>
+<% } else { %>
+	
+<% } %>

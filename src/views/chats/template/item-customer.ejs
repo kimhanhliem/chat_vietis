@@ -1,0 +1,36 @@
+<% if (listCustommers.length > 0) { %>
+	<% listCustommers.forEach(function (custommer, i) { -%>
+		<% var active_custommer = (custommer._id == custommerId) ? 'active' : ''; %>
+		<% var new_message = ((custommer.total_mesage && custommer.total_mesage.user > 0) || !custommer.support) ? 'new' : ''; %>
+		<% if (!custommer.support) { %>
+			<li class="item <%= new_message; %> <%= active_custommer; %>" id="list-item-<%= custommer._id; %>" data-time="<%= custommer.timesteamp; %>">
+				<a href="/chats/index/<%= custommer._id; %>">
+					<div class="img" style="background-color: <%= custommer.color %>;"><%= custommer.sub_name %></div>
+					<div class="content">
+						<div class="name"><%= custommer.full_name %></div>
+						<div class="tick">Tin nhắn chờ...</div>
+						<div class="time"><%= custommer.created %></div>
+						<div class="number"><%= (custommer.total_mesage ? custommer.total_mesage.user : 0) %></div>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</li>
+		<% } else { %>
+			<li class="item <%= new_message; %> <%= active_custommer; %>" id="list-item-<%= custommer._id; %>" data-time="<%= custommer.timesteamp; %>">
+				<a href="/chats/index/<%= custommer._id; %>">
+					<div class="img" style="background-color: <%= custommer.color %>;"><%= custommer.sub_name %></div>
+					<div class="content">
+						<div class="name"><%= custommer.full_name %></div>
+						<div class="phone"><%= custommer.phone %></div>
+						<div class="time"><%= custommer.created %></div>
+						<div class="number"><%= (custommer.total_mesage ? custommer.total_mesage.user : 0) %></div>
+					</div>
+					<div class="clear"></div>
+				</a>
+			</li>
+		<% } %>
+
+	<% }); -%>
+<% } else { %>
+	<li class="no-message">Không có nội dung hiển thị</li>
+<% } %>

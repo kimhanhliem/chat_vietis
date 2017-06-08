@@ -1,0 +1,61 @@
+body{
+	background: gray;
+	height: 100%;
+}
+
+.login-box{
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 100px;
+    box-shadow: 1px 1px 20px #404040;
+    -moz-box-shadow: 1px 1px 20px #404040;
+    -webkit-box-shadow: 1px 1px 20px #404040;
+    border: 1px solid #5e5e5e;
+}
+
+.login-box .login-logo{
+	text-align: center;
+	padding: 20px 0;
+}
+
+.login-box .title{
+    line-height: 40px;
+    text-align: center;
+    background: #3a5b9a;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 0 #00102d;
+    -moz-text-shadow: 0 2px 0 #00102d;
+    -webkit-text-shadow: 0 2px 0 #00102d;
+}
+
+.login-box .login-logo a{
+    display: inline-block;
+    width: 155px;
+    height: 40px;
+    background-image: url('../../images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: -99999px;
+}
+
+.login-box-body{
+	padding: 20px;
+}
+
+.login-box .forgot{
+	padding: 20px;
+	background: #e5e5e5;
+	color: #9b9ba2;
+	text-shadow: 0 1px 3px #fff;
+	-webkit-text-shadow: 0 1px 3px #fff;
+	-moz-text-shadow: 0 1px 3px #fff;
+	display: block;
+	text-decoration: none;
+}
+.login-box .forgot:hover{
+	color: #000;
+}

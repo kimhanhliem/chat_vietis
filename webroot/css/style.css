@@ -1,0 +1,20 @@
+.clear{
+	clear: both;
+}
+
+.no-item-message{
+	text-align: center;
+    margin: 100px 0;
+    color: #b5b5b5;
+}
+
+.no-message{
+	text-align: center;
+    padding: 30px 0;
+    color: #b5b5b5;
+    border-bottom: 1px solid #dadada;
+}
+
+label span.required{
+	color: red;
+}

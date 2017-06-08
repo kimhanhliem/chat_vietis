@@ -1,0 +1,8 @@
+<div class="form-group">
+	<label>Role<span class="required">*</span></label>
+	<select name="role" class="form-control">
+		<% for(var key in roles){ %>
+			<option value="<%= roles[key] %>" <%= forms.role == roles[key] ? 'selected' : '' %>><%= key %></option>
+		<% } %>
+	</select>
+</div>

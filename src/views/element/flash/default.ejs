@@ -1,0 +1,28 @@
+<% if (messages.info) { %>
+	<div class="alert alert-info" role="alert" onclick="this.classList.add('hidden');">
+		<a class="close" href="#">×</a><i class="fa fa-info" aria-hidden="true"></i>
+		<%= messages.info %>
+	</div>
+<% } %>
+
+<% if (messages.success) { %>
+	<div class="alert alert-success" role="alert" onclick="this.classList.add('hidden');">
+		<i class="fa fa-check" aria-hidden="true"></i>
+		<%= messages.success %>
+	</div>
+<% } %>
+
+<% if (messages.warning) { %>
+	<div class="alert alert-warning" role="alert" onclick="this.classList.add('hidden');">
+		<a class="close" href="#">×</a>
+		<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+		<%= messages.warning %>
+	</div>
+<% } %>
+
+<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert" onclick="this.classList.add('hidden');">
+		<i class="fa fa-bug" aria-hidden="true"></i>
+		<%= messages.error %>
+	</div>
+<% } %>

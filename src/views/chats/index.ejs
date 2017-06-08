@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/css/chats/chats.css">
+
+<% var selectorCustommer = (custommerId) ? 'uid' + custommerId : ''; %>
+
+<div class="wrapper-chat" id="<%= selectorCustommer %>">
+	<div class="sidebar-chat">
+		<div class="header">
+			<a href="#">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-weixin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+				</span>
+				All Conversations
+			</a>
+		</div>
+		<ul class="list">
+			<%- include('./template/item-customer'); %>
+		</ul>
+	</div>
+	<div class="main-chat">
+		<div class="header">
+			<div class="item"><a href="#">
+				<% if(custommerCurrent._id){ %>
+					<div class="img" style="background-color: <%= custommerCurrent.color %>"><%= custommerCurrent.sub_name %></div>
+					<div class="content">
+						<div class="name"><%= custommerCurrent.full_name %></div>
+					</div>
+				<% } else { %>
+					<div class="content" style="padding: 0;">
+						<div class="name">Chưa có tin nhắn hiển thị</div>
+					</div>
+				<% } %>
+				<div class="clear"></div>
+			</a></div>
+		</div>
+
+		<div class="main list">
+			<div class="list-message">
+				<%- include('./template/item-message'); %>
+			</div>
+			<div class="typing"></div>
+		</div>
+
+		<div class="form">
+			<% if(custommerCurrent && custommerId){ %>
+				<% if(custommerCurrent.support){ %>
+					<form action="" onsubmit="Chat.newMessage(this); return false;" class="form_send_message">
+						<div class="inputmessage">
+							<input type="hidden" name="user_id" value="<%= (custommerId ? custommerId : '') %>">
+							<input type="hidden" name="type_sent" value="support">
+							<textarea name="message" placeholder="Type a message" onkeypress="return ChatMain.keypressSendMessage(this, event);"></textarea>
+							<button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+						</div>
+					</form>
+				<% } else { %>
+					<div class="approval">
+						<a href="#" onclick="return Chat.approvalSupport('<%= custommerCurrent._id; %>');"><i class="fa fa-unlock" aria-hidden="true"></i> Approval</a>
+					</div>
+				<% } %>
+			<% } %>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

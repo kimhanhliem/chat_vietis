@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/chats/frame.css">
+<script type="text/javascript">
+	var $UserId = '<%= (custommer.support ? custommer.support._id : '') %>';
+</script>
+<script src="/js/socket.io.js"></script>
+<script src="/js/chats/main.js"></script>
+<script src="/js/chats/html.js"></script>
+<script src="/js/chats/frame.js"></script>
+
+<% var selectorCustommer = (custommer._id) ? 'uid' + custommer._id : ''; %>
+
+<div class="wrapper-chat <%= resize_frame %>" id="<%= selectorCustommer %>" data="minimize">
+	<div class="main-chat" id="main-chat"> 
+		<div class="header">
+			<a href="/chats/frame" target="_blank">
+				<h1>VietIS - Chat</h1>
+				<small><i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i> Web</small>
+			</a>
+			<a href="#" class="button_close" onclick="ChatFrame.minmaximize(this); return false;">
+				<i class="glyphicon glyphicon-minus minimize"></i>
+				<i class="glyphicon glyphicon-plus maximize"></i>
+			</a>
+		</div>
+		<div class="messages"></div>
+		<div class="main <%= (custommer._id) ? 'list' : 'form' %>">
+			<div class="form_register">
+				<form action="#" onsubmit="ChatFrame.registerUser(this); return false;" method="POST">
+					<div class="form-group">
+						<label>Full Name: <span class="required">*</span></label>
+						<input type="text" class="form-control" placeholder="Full Name" name="full_name" value="">
+					</div>
+					<div class="form-group">
+						<label>Email:</label>
+						<input type="text" class="form-control" placeholder="Email" name="email" value="">
+					</div>
+					<div class="form-group">
+						<label>Phone:</label>
+						<input type="text" class="form-control" placeholder="Phone" name="phone" value="">
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary" style="background: #3b5999;">Start send message</button>
+					</div>
+				</form>
+			</div>
+			<div class="list-message">
+				<%- include('./template/item-message'); %>
+			</div>
+			<div class="typing"></div>
+		</div>
+
+		<div class="form_input">
+			<form action="#" onsubmit="ChatFrame.newMessage(this); return false;" class="form_send_message">
+				<div class="inputmessage">
+					<input type="hidden" name="type_sent" value="custommer">
+					<textarea name="message" placeholder="Type a message" onkeypress="return ChatMain.keypressSendMessage(this, event);"></textarea>
+					<button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<%- include('./template/media'); %>
+</div>

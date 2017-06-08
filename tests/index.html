@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type='text/javascript' src="jquery-2.2.3.min.js"></script>
+	<script type='text/javascript' src="iframeResizer.js"></script>
+	<script type='text/javascript'>
+		window._chat || function(event) {
+			var protocol = event.location.protocol=="https:"?"https:":"http:";
+			var createEle = document.createElement("script");
+			createEle.type = "text/javascript";
+			createEle.async = true;
+			createEle.src = protocol + "//34.211.58.166:3000/js/chats/loader.js";
+			// createEle.src = protocol + "//172.16.80.139:3000/js/chats/loader.js";
+			var getElesByTagName = document.getElementsByTagName("script")[0];
+			getElesByTagName.parentNode.insertBefore(createEle, getElesByTagName);
+		}(window);
+	</script>
+</body>
+</html>
